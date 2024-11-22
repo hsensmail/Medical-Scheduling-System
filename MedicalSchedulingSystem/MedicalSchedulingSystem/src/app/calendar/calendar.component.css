@@ -1,0 +1,71 @@
+.calendar-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day-label {
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendar-empty {
+  visibility: hidden;
+}
+
+.calendar-day {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 80px;
+  padding: 5px;
+  position: relative;
+}
+
+.date-number {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.appointments {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.appointment {
+  background-color: #007bff;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.filter {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+  .filter label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  .filter select {
+    padding: 5px;
+    font-size: 14px;
+  }

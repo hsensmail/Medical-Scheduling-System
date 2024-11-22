@@ -1,0 +1,33 @@
+<div *ngIf="appointments.length > 0">
+<table   id="customers">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th>Doctor's Name</th>
+
+      <th>Date</th>
+
+      <th>Time</th>
+
+      <th>Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments; let i=index">
+      <td>{{ appointment.name }}</td>
+      <td>{{ appointment.doctorName }}</td>
+      <td>{{ appointment.appointmentDate }}</td>
+      <td>{{ appointment.appointmentTime }}</td>
+      <td>
+        <button style="margin-right:3px;" class="btn btn-primary" (click)="editAppointment(i)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteAppointment(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ng-template #noAppointments>
+  <p>No appointments yet.</p>
+</ng-template>

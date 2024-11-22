@@ -1,0 +1,38 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button (click)="previousMonth()">&#9664;</button>
+    <h2>{{ currentDate | date: 'MMMM yyyy' }}</h2>
+    <button (click)="nextMonth()">&#9654;</button>
+  </div>
+
+  <div class="filter">
+    <label for="doctor-select">Filter by Doctor:</label>
+    <select id="doctor-select" (change)="onDoctorChange($event)">
+      <option value="">All Doctors</option>
+      <option *ngFor="let doctor of doctors" [value]="doctor">
+        {{ doctor }}
+      </option>
+    </select>
+  </div>
+
+  <div class="calendar-grid">
+    <div class="calendar-day-label" *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">
+      {{ day }}
+    </div>
+
+    <div class="calendar-empty" *ngFor="let empty of [].constructor(firstDayIndex)"></div>
+
+    <div class="calendar-day" *ngFor="let day of daysInMonth">
+      <div class="date-number">{{ day }}</div>
+      <div class="appointments">
+        <ng-container *ngIf="appointments$ | async as appointments">
+          <div class="appointment"
+               *ngFor="let appointment of getAppointmentsForDay(day, appointments)"
+               [title]="'Time: ' + appointment.appointmentTime + '\nDoctor: ' + appointment.doctorName">
+            {{ appointment.name }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

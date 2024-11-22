@@ -1,0 +1,76 @@
+
+<div class="formbold-main-wrapper">
+  <div class="formbold-form-wrapper">
+    <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm" action="https://formbold.com/s/FORM_ID" method="POST">
+      <div class="formbold-mb-5">
+        <label for="name" class="formbold-form-label"> Full Name </label>
+        <input type="text"
+               name="name"
+               id="name"
+               placeholder="Full Name"
+               class="formbold-form-input"
+               [(ngModel)]="name"
+               required
+               #patientNameField="ngModel" />
+      </div>
+      <!-- Error Message -->
+      <div *ngIf="patientNameField.invalid && patientNameField.touched">
+        Patient Name is required.
+      </div>
+
+
+      <div class="formbold-mb-5">
+        <label class="formbold-form-label"> Doctor's Name </label>
+        <input type="text"
+               name="doctorName"
+               placeholder="Doctor's Name"
+               class="formbold-form-input"
+               [(ngModel)]="doctorName"
+               required
+               #doctorNameField="ngModel" />
+      </div>
+      <div *ngIf="doctorNameField.invalid && doctorNameField.touched">
+        Doctor's Name is required.
+      </div>
+      <div class="flex flex-wrap formbold--mx-3">
+        <div class="w-full sm:w-half formbold-px-3">
+          <div class="formbold-mb-5 w-full">
+            <label for="date" class="formbold-form-label"> Date </label>
+            <input type="date"
+                   name="date"
+                   id="date"
+                   class="formbold-form-input"
+                   [(ngModel)]="appointmentDate"
+                   required 
+                   #appointmentDateField="ngModel"/>
+          </div>
+          <div *ngIf="appointmentDateField.invalid && appointmentDateField.touched">
+            Appointment Date is required.
+          </div>
+        </div>
+        <div class="w-full sm:w-half formbold-px-3">
+          <div class="formbold-mb-5">
+            <label for="time" class="formbold-form-label"> Time </label>
+            <input type="time"
+                   name="time"
+                   id="time"
+                   class="formbold-form-input"
+                   [(ngModel)]="appointmentTime"
+                   required
+                   #appointmentTimeField="ngModel" />
+          </div>
+          <div *ngIf="appointmentTimeField.invalid && appointmentTimeField.touched">
+            Appointment Time is required.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div>
+        <button class="formbold-btn" type="submit"> {{ isEdit ? 'Update Appointment' : 'Add Appointment' }}</button>
+      </div>
+     
+    </form>
+  </div>
+</div>
